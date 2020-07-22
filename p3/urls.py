@@ -18,8 +18,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('index/',views.index,name="index"),
-    path('',views.home,name="home"),
-    path('second/',views.second,name="second")
+   path('admin/', admin.site.urls),
+    path('', view.index, name='index'),
+    path('home', view.home, name='home'),
+    path('second', view.second, name='second'),
+    path('third', view.third, name='third'),
+    path('fourth', view.fourth, name='fourth'),
+    path('fifth', view.fifth, name='fifth'),
+    path('urls_data/<name>', view.urls_data, name='urls_data'),
+    path('url_sum/<ab>', view.url_cal, name='url_ab'),
+    path('url_ovel/<s>', view.ovel, name='url_ovel'),
 ]
