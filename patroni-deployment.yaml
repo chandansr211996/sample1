@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patroni
+  labels:
+    app: patroni
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: patroni
+  template:
+    metadata:
+      labels:
+        app: patroni
+    spec:
+      containers:
+      - name: patroni
+        image: patroni:latest
+        ports:
+        - containerPort: 8008
+        volumeMounts:
+        - name: config-volume
+          mountPath: /etc/patroni
+      volumes:
+      - name: config-volume
+        configMap:
+          name: patroni-config
